@@ -156,7 +156,7 @@ declare namespace monaco {
          *
          * @param value A string which represents an Uri (see `Uri#toString`).
          */
-        static parse(value: string, _strict?: boolean): Uri;
+        static parse(value: string): Uri;
         /**
          * Creates a new Uri from a file system path, e.g. `c:\my\files`,
          * `/usr/home`, or `\\server\share\some\path`.
@@ -397,13 +397,9 @@ declare namespace monaco {
         static readonly WinCtrl: number;
         static chord(firstPart: number, secondPart: number): number;
     }
-
     export interface IMarkdownString {
         value: string;
         isTrusted?: boolean;
-        uris?: {
-            [href: string]: UriComponents;
-        };
     }
 
     export interface IKeyboardEvent {
@@ -2397,14 +2393,16 @@ declare namespace monaco.editor {
         arrowSize?: number;
         /**
          * Render vertical scrollbar.
+         * Accepted values: 'auto', 'visible', 'hidden'.
          * Defaults to 'auto'.
          */
-        vertical?: 'auto' | 'visible' | 'hidden';
+        vertical?: string;
         /**
          * Render horizontal scrollbar.
+         * Accepted values: 'auto', 'visible', 'hidden'.
          * Defaults to 'auto'.
          */
-        horizontal?: 'auto' | 'visible' | 'hidden';
+        horizontal?: string;
         /**
          * Cast horizontal and vertical shadows when the content is scrolled.
          * Defaults to true.
@@ -2682,11 +2680,6 @@ declare namespace monaco.editor {
          * Defaults to false.
          */
         mouseWheelZoom?: boolean;
-        /**
-         * Enable smooth caret animation.
-         * Defaults to false.
-         */
-        cursorSmoothCaretAnimation?: boolean;
         /**
          * Control the cursor style, either 'block' or 'line'.
          * Defaults to 'line'.
@@ -3240,7 +3233,6 @@ declare namespace monaco.editor {
         readonly overviewRulerBorder: boolean;
         readonly cursorBlinking: TextEditorCursorBlinkingStyle;
         readonly mouseWheelZoom: boolean;
-        readonly cursorSmoothCaretAnimation: boolean;
         readonly cursorStyle: TextEditorCursorStyle;
         readonly cursorWidth: number;
         readonly hideCursorInOverviewRuler: boolean;
@@ -4622,6 +4614,10 @@ declare namespace monaco.languages {
          */
         indentAction: IndentAction;
         /**
+         * Describe whether to outdent current line.
+         */
+        outdentCurrentLine?: boolean;
+        /**
          * Describes text to be appended after the new line and after the indentation.
          */
         appendText?: string;
@@ -4765,7 +4761,7 @@ declare namespace monaco.languages {
         preselect?: boolean;
         /**
          * A string or snippet that should be inserted in a document when selecting
-         * this completion.
+         * this completion. When `falsy` the [label](#CompletionItem.label)
          * is used.
          */
         insertText: string;
@@ -4944,8 +4940,8 @@ declare namespace monaco.languages {
      * the [parameter hints](https://code.visualstudio.com/docs/editor/intellisense)-feature.
      */
     export interface SignatureHelpProvider {
-        readonly signatureHelpTriggerCharacters?: ReadonlyArray<string>;
-        readonly signatureHelpRetriggerCharacters?: ReadonlyArray<string>;
+        readonly signatureHelpTriggerCharacters: ReadonlyArray<string>;
+        readonly signatureHelpRetriggerCharacters: ReadonlyArray<string>;
         /**
          * Provide help for the signature at the given position and document.
          */
@@ -5062,18 +5058,6 @@ declare namespace monaco.languages {
     }
 
     /**
-     * The definition provider interface defines the contract between extensions and
-     * the [go to definition](https://code.visualstudio.com/docs/editor/editingevolved#_go-to-definition)
-     * and peek definition features.
-     */
-    export interface DeclarationProvider {
-        /**
-         * Provide the declaration of the symbol at the given position and document.
-         */
-        provideDeclaration(model: editor.ITextModel, position: Position, token: CancellationToken): ProviderResult<Definition | DefinitionLink[]>;
-    }
-
-    /**
      * The implementation provider interface defines the contract between extensions and
      * the go to implementation feature.
      */
@@ -5153,6 +5137,10 @@ declare namespace monaco.languages {
         range: IRange;
         text: string;
         eol?: editor.EndOfLineSequence;
+    } | {
+        range: undefined;
+        text: undefined;
+        eol: editor.EndOfLineSequence;
     };
 
     /**
