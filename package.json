@@ -1,7 +1,7 @@
 {
   "name": "monaco-editor",
   "private": true,
-  "version": "0.15.5",
+  "version": "0.15.6",
   "description": "A browser based code editor",
   "author": "Microsoft Corporation",
   "license": "MIT",
@@ -19,12 +19,12 @@
   },
   "devDependencies": {
     "clean-css": "^4.2.1",
-    "event-stream": "^3.3.4",
+    "event-stream": "3.3.4",
     "gulp": "^3.9.1",
     "gulp-typedoc": "^2.2.0",
     "http-server": "^0.11.1",
     "monaco-css": "2.3.0",
-    "monaco-editor-core": "0.15.4",
+    "monaco-editor-core": "0.15.5",
     "monaco-html": "2.3.0",
     "monaco-json": "2.3.0",
     "monaco-languages": "1.6.0",
