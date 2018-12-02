@@ -169,7 +169,7 @@
 
 			require(['vs/editor/editor.main'], function() {
 				if (!RESOLVED_CORE.isRelease()) {
-					// At this point we've loaded the monaco-editor-core
+					// At this point we've loaded the @vscode/monaco-editor-core
 					require(RESOLVED_PLUGINS.map(function(plugin) { return plugin.contrib; }), function() {
 						// At this point we've loaded all the plugins
 						callback();

@@ -53,13 +53,13 @@ gulp.task('release', ['clean-release'], function() {
 			.pipe(gulp.dest('release')),
 
 		// min-maps folder
-		gulp.src('node_modules/monaco-editor-core/min-maps/**/*').pipe(gulp.dest('release/min-maps')),
+		gulp.src('node_modules/@vscode/monaco-editor-core/min-maps/**/*').pipe(gulp.dest('release/min-maps')),
 
 		// other files
 		gulp.src([
-			'node_modules/monaco-editor-core/LICENSE',
-			'node_modules/monaco-editor-core/monaco.d.ts',
-			'node_modules/monaco-editor-core/ThirdPartyNotices.txt',
+			'node_modules/@vscode/monaco-editor-core/LICENSE',
+			'node_modules/@vscode/monaco-editor-core/monaco.d.ts',
+			'node_modules/@vscode/monaco-editor-core/ThirdPartyNotices.txt',
 			'README.md'
 		])
 		.pipe(addPluginDTS())
@@ -73,7 +73,7 @@ gulp.task('release', ['clean-release'], function() {
  */
 function releaseOne(type) {
 	return es.merge(
-		gulp.src('node_modules/monaco-editor-core/' + type + '/**/*')
+		gulp.src('node_modules/@vscode/monaco-editor-core/' + type + '/**/*')
 			.pipe(addPluginContribs(type))
 			.pipe(gulp.dest('release/' + type)),
 		pluginStreams(type, 'release/' + type + '/')
@@ -205,9 +205,9 @@ function addPluginContribs(type) {
 function ESM_release() {
 	return es.merge(
 		gulp.src([
-			'node_modules/monaco-editor-core/esm/**/*',
+			'node_modules/@vscode/monaco-editor-core/esm/**/*',
 			// we will create our own editor.api.d.ts which also contains the plugins API
-			'!node_modules/monaco-editor-core/esm/vs/editor/editor.api.d.ts'
+			'!node_modules/@vscode/monaco-editor-core/esm/vs/editor/editor.api.d.ts'
 		])
 			.pipe(ESM_addImportSuffix())
 			.pipe(ESM_addPluginContribs('release/esm'))
@@ -230,7 +230,7 @@ function ESM_pluginStreams(destinationPath) {
 /**
  * Release a plugin to `esm`.
  * Adds a dependency to 'vs/editor/editor.api' in contrib files in order for `monaco` to be defined.
- * Rewrites imports for 'monaco-editor-core/**'
+ * Rewrites imports for '@vscode/monaco-editor-core/**'
  */
 function ESM_pluginStream(plugin, destinationPath) {
 	const DESTINATION = path.join(__dirname, destinationPath);
@@ -255,13 +255,13 @@ function ESM_pluginStream(plugin, destinationPath) {
 
 				if (!/(^\.\/)|(^\.\.\/)/.test(importText)) {
 					// non-relative import
-					if (!/^monaco-editor-core/.test(importText)) {
+					if (!/^@vscode\/monaco-editor-core/.test(importText)) {
 						console.error(`Non-relative import for unknown module: ${importText} in ${data.path}`);
 						process.exit(0);
 					}
 
 					const myFileDestPath = path.join(DESTINATION, plugin.modulePrefix, data.relative);
-					const importFilePath = path.join(DESTINATION, importText.substr('monaco-editor-core/esm/'.length));
+					const importFilePath = path.join(DESTINATION, importText.substr('@vscode/monaco-editor-core/esm/'.length));
 					let relativePath = path.relative(path.dirname(myFileDestPath), importFilePath).replace(/\\/g, '/');
 					if (!/(^\.\/)|(^\.\.\/)/.test(relativePath)) {
 						relativePath = './' + relativePath;
