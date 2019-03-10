@@ -1392,7 +1392,7 @@ declare namespace monaco.editor {
         /**
          * The text to replace with. This can be null to emulate a simple delete.
          */
-        text: string;
+        text: string | null;
         /**
          * This indicates that this operation has "insert" semantics.
          * i.e. forceMoveMarkers = true => if `range` is collapsed, all markers at the position will be moved.
@@ -2381,16 +2381,14 @@ declare namespace monaco.editor {
         arrowSize?: number;
         /**
          * Render vertical scrollbar.
-         * Accepted values: 'auto', 'visible', 'hidden'.
          * Defaults to 'auto'.
          */
-        vertical?: string;
+        vertical?: 'auto' | 'visible' | 'hidden';
         /**
          * Render horizontal scrollbar.
-         * Accepted values: 'auto', 'visible', 'hidden'.
          * Defaults to 'auto'.
          */
-        horizontal?: string;
+        horizontal?: 'auto' | 'visible' | 'hidden';
         /**
          * Cast horizontal and vertical shadows when the content is scrolled.
          * Defaults to true.
@@ -2554,6 +2552,18 @@ declare namespace monaco.editor {
          * Enable using global storage for remembering suggestions.
          */
         shareSuggestSelections?: boolean;
+        /**
+         * Enable or disable icons in suggestions. Defaults to true.
+         */
+        showIcons?: boolean;
+        /**
+         * Max suggestions to show in suggestions. Defaults to 12.
+         */
+        maxVisibleSuggestions?: boolean;
+        /**
+         * Names of suggestion types to filter.
+         */
+        filteredTypes?: Record<string, boolean>;
     }
 
     /**
@@ -2848,11 +2858,6 @@ declare namespace monaco.editor {
          * Parameter hint options.
          */
         parameterHints?: IEditorParameterHintOptions;
-        /**
-         * Render icons in suggestions box.
-         * Defaults to true.
-         */
-        iconsInSuggestions?: boolean;
         /**
          * Options for auto closing brackets.
          * Defaults to language defined behavior.
@@ -3202,6 +3207,9 @@ declare namespace monaco.editor {
         readonly snippetsPreventQuickSuggestions: boolean;
         readonly localityBonus: boolean;
         readonly shareSuggestSelections: boolean;
+        readonly showIcons: boolean;
+        readonly maxVisibleSuggestions: number;
+        readonly filteredTypes: Record<string, boolean>;
     }
 
     export interface InternalParameterHintOptions {
@@ -3276,7 +3284,6 @@ declare namespace monaco.editor {
         };
         readonly quickSuggestionsDelay: number;
         readonly parameterHints: InternalParameterHintOptions;
-        readonly iconsInSuggestions: boolean;
         readonly formatOnType: boolean;
         readonly formatOnPaste: boolean;
         readonly suggestOnTriggerCharacters: boolean;
@@ -4768,7 +4775,7 @@ declare namespace monaco.languages {
         preselect?: boolean;
         /**
          * A string or snippet that should be inserted in a document when selecting
-         * this completion. When `falsy` the [label](#CompletionItem.label)
+         * this completion.
          * is used.
          */
         insertText: string;
@@ -4949,8 +4956,8 @@ declare namespace monaco.languages {
      * the [parameter hints](https://code.visualstudio.com/docs/editor/intellisense)-feature.
      */
     export interface SignatureHelpProvider {
-        readonly signatureHelpTriggerCharacters: ReadonlyArray<string>;
-        readonly signatureHelpRetriggerCharacters: ReadonlyArray<string>;
+        readonly signatureHelpTriggerCharacters?: ReadonlyArray<string>;
+        readonly signatureHelpRetriggerCharacters?: ReadonlyArray<string>;
         /**
          * Provide help for the signature at the given position and document.
          */
