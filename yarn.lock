@@ -63,10 +63,10 @@
     "@types/glob" "*"
     "@types/node" "*"
 
-"@vscode/monaco-editor-core@0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@vscode/monaco-editor-core/-/monaco-editor-core-0.16.0.tgz#af74744f9580ffe74d05902db09010ba937e2bdb"
-  integrity sha512-Pa5OyOdnaktx9Tc0zdLkRXiN9UHCBU00U99ZmM+5qHn6DUSbSZqn763x/MkmDXBfR/D7Ga12+kiPlBAmRbkvpw==
+"@vscode/monaco-editor-core@0.16.0-1":
+  version "0.16.0-1"
+  resolved "https://registry.yarnpkg.com/@vscode/monaco-editor-core/-/monaco-editor-core-0.16.0-1.tgz#85b4cb70a7906055dc8b5133e19ee627540fe5ba"
+  integrity sha512-LyKm7gM742Advlziw0mvRt6k7wzcN961nwOe4P9wYrtFkE2qYEGBC6QusLx0n5tORhx9QGZ5Y34ca7OIrT5Qvg==
 
 abab@^2.0.0:
   version "2.0.0"
