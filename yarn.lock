@@ -63,10 +63,10 @@
     "@types/glob" "*"
     "@types/node" "*"
 
-"@vscode/monaco-editor-core@0.16.0-3":
-  version "0.16.0-3"
-  resolved "https://registry.yarnpkg.com/@vscode/monaco-editor-core/-/monaco-editor-core-0.16.0-3.tgz#ac9fd1f7b67c121dd999dd761b636469ed8db7a9"
-  integrity sha512-9BFHXZrky3KLBDBb+3/V3bY4t+xn/zlBOhn0YNYntoV1AhNO8LbrZj3yFenIwECNNQG4ZSPQJnOoH5yXu0wYGg==
+"@vscode/monaco-editor-core@1.31.1":
+  version "1.33.1"
+  resolved "https://registry.yarnpkg.com/@vscode/monaco-editor-core/-/monaco-editor-core-1.33.1.tgz#e83e8b7799fb8e16e755116075df85fb630e6ab6"
+  integrity sha512-f/c2Y6+QwHgMZQ9i2rKUoBwTQooM7z6qvLz9Z9GWKa/ZyFLIu90RW8QhN2BJmEgkCMnYE69/BaPpS6TrQgwCtw==
 
 abab@^2.0.0:
   version "2.0.0"
@@ -2067,15 +2067,15 @@ monaco-css@2.5.0:
   resolved "https://registry.yarnpkg.com/monaco-css/-/monaco-css-2.5.0.tgz#eb173658306d6ae6a8d38c08df7f67ecba685f80"
   integrity sha512-V5YuMysU5MbNMPlZxMfB4os/mx+nIH3emrl2zgQe7Iu77dQhODoUysd5OoZB9hzpFoRDZ/KFuEaFaib8/ziYRQ==
 
-monaco-html@2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/monaco-html/-/monaco-html-2.5.0.tgz#c18b0301fe17b4e469589a14dabeb6ddc4a57fe0"
-  integrity sha512-XPfxgoUooqJ14Zf/Xxr4lfskzzwZRhfwEGmNNeRYYfN6zC9VwBhGjAIx1OQbhtZuK/W3vmL5CLRlKQ+0NpjXJw==
+monaco-html@2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/monaco-html/-/monaco-html-2.5.2.tgz#3e231ff50d024ed4f3c2d9fb075e77351f33508a"
+  integrity sha512-tugs+jHMtfInq/gMl5wXYoUs649rc5h6a/bbaK2+4MTx//iWUZ9mgTsgmbqqfbujEgHxxJHiGWTDIZjz8Ztx7g==
 
-monaco-json@2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/monaco-json/-/monaco-json-2.5.0.tgz#5c5388e6f23997267b5b2f884e33c41d2f8d499f"
-  integrity sha512-IBt9x29L6cZ4oBFq+9iIC1uPXe1LIeJ0GigosbeCfPx+jhoucQm+3yMMFprAUIer9b1+lB8q+a6ibEUm8VYktQ==
+monaco-json@2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/monaco-json/-/monaco-json-2.5.1.tgz#fd0fb78df89cd29665506956d66ad782132d9344"
+  integrity sha512-ceOjp5qf054EAVSzGSRHPnggogAwTkyKqivlwwXM7u383l7p4x4/AmkIQb63oUW+zbLEZMXTRFrCgmIBePZwFA==
 
 monaco-languages@1.7.0:
   version "1.7.0"
