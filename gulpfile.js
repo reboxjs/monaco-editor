@@ -365,12 +365,13 @@ function ESM_addImportSuffix() {
 			if (/\.css$/.test(importText)) {
 				continue;
 			}
-
-			contents = (
-				contents.substring(0, pos + 1)
-				+ importText + '.js'
-				+ contents.substring(end + 1)
-			);
+			if(!nodeModules.includes(importText)){ // @sri to make sure node_modules are not appended
+				contents = (
+					contents.substring(0, pos + 1)
+					+ importText + '.js'
+					+ contents.substring(end + 1)
+				);
+			}
 		}
 
 		data.contents = Buffer.from(contents);
@@ -421,6 +422,16 @@ function ESM_addPluginContribs(dest) {
 		}));
 	});
 }
+
+/**
+ * @sri
+ * To make sure node_modules are identified
+ */
+const nodeModules = [
+	'fs', 'os', 'util', 'child_process', 'jschardet', 'stream',
+	'iconv-lite', 'string_decoder', 'assert', 'crypto', 'getmac', 'net', 'yazl', 'yauzl', 'vscode-sqlite3', 'http', 'https', 'zlib',
+	'url', 'https-proxy-agent', 'http-proxy-agent', 'windows-process-tree',
+];
 
 /**
  * Edit monaco.d.ts:

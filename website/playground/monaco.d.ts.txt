@@ -1,6 +1,6 @@
 /*!-----------------------------------------------------------
  * Copyright (c) Microsoft Corporation. All rights reserved.
- * Type definitions for monaco-editor v0.17.0
+ * Type definitions for monaco-editor v0.17.0-1
  * Released under the MIT license
 *-----------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------
@@ -43,7 +43,6 @@ declare namespace monaco {
     }
 
     export class CancellationTokenSource {
-        constructor(parent?: CancellationToken);
         readonly token: CancellationToken;
         cancel(): void;
         dispose(): void;
@@ -176,11 +175,8 @@ declare namespace monaco {
          * @param skipEncoding Do not encode the result, default is `false`
          */
         toString(skipEncoding?: boolean): string;
-        toJSON(): UriComponents;
-        static revive(data: UriComponents | Uri): Uri;
-        static revive(data: UriComponents | Uri | undefined): Uri | undefined;
-        static revive(data: UriComponents | Uri | null): Uri | null;
-        static revive(data: UriComponents | Uri | undefined | null): Uri | undefined | null;
+        toJSON(): object;
+        static revive(data: UriComponents | any): Uri;
     }
 
     export interface UriComponents {
@@ -5261,16 +5257,11 @@ declare namespace monaco.languages {
         url?: Uri | string;
     }
 
-    export interface ILinksList {
-        links: ILink[];
-        dispose?(): void;
-    }
-
     /**
      * A provider of links.
      */
     export interface LinkProvider {
-        provideLinks(model: editor.ITextModel, token: CancellationToken): ProviderResult<ILinksList>;
+        provideLinks(model: editor.ITextModel, token: CancellationToken): ProviderResult<ILink[]>;
         resolveLink?: (link: ILink, token: CancellationToken) => ProviderResult<ILink>;
     }
 
