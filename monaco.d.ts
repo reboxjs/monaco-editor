@@ -1,6 +1,10 @@
 /*!-----------------------------------------------------------
  * Copyright (c) Microsoft Corporation. All rights reserved.
+<<<<<<< HEAD
  * Type definitions for monaco-editor v0.17.0-1
+=======
+ * Type definitions for monaco-editor v0.17.1
+>>>>>>> microsoft-master
  * Released under the MIT license
 *-----------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------
