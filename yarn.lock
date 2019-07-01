@@ -63,10 +63,10 @@
     "@types/glob" "*"
     "@types/node" "*"
 
-"@vscode/monaco-editor-core@1.33.1-2":
-  version "1.33.1-2"
-  resolved "https://registry.yarnpkg.com/@vscode/monaco-editor-core/-/monaco-editor-core-1.33.1-2.tgz#98c0dc3949c01d903151d63e9e729fc12197d8c6"
-  integrity sha512-sa7Ip3KdocYBwHQTdiSXCAOgZR8usJnU2F7D/HCqDHIv/eoPbJjjvKE0MiWoNaHbV4tJU545L4el9sjVXCvRiw==
+"@vscode/monaco-editor-core@1.35.1":
+  version "1.35.1"
+  resolved "https://registry.yarnpkg.com/@vscode/monaco-editor-core/-/monaco-editor-core-1.35.1.tgz#fff1203341922bf92b02dea4a513c711272b3df6"
+  integrity sha512-Hf3KARz0rHaZ/7rwqRcmNFLj6fxkQMHSdwi250dRoyrcD5Xk+n5nv+wVXi2fzW58OnOcmq8pgtlZBXXHhAu9JQ==
   optionalDependencies:
     getmac "1.4.1"
     graceful-fs "4.1.11"
@@ -2207,10 +2207,10 @@ monaco-languages@1.7.0:
   resolved "https://registry.yarnpkg.com/monaco-languages/-/monaco-languages-1.7.0.tgz#938197049db48ffa968940ef3e361b0fd69f3ce9"
   integrity sha512-2YrYlkCF/g2H0PDt/ERax2IStaihZ17v1JkYnj2xEALYNah0pbQvGH9gXJvdVx0EpBoSRmxVnrwwM2oBWWOjSQ==
 
-monaco-typescript@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/monaco-typescript/-/monaco-typescript-3.4.1.tgz#8526ac39387919c620552d94409091bf02944a7e"
-  integrity sha512-pkuKPTvlkE6gmMEF+ZCxgI0ojl8mTsRdMZFDfKfihNiCuOsJCKIYOZ8mnDIhSToUR8rEVq7BUTGO35IwG0PIXw==
+monaco-typescript@3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/monaco-typescript/-/monaco-typescript-3.5.0.tgz#d93717326de9c7911346a16d0b29016e37a9f726"
+  integrity sha512-eXI670EEaA+7x58q+4BDwNgr/tQ+MJy1XUPcjFLM+/IagXPDt2UnIGJfTbdWzuhngA0STogd3KnYbgMj9W82pg==
 
 ms@2.0.0:
   version "2.0.0"
