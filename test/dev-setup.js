@@ -88,19 +88,19 @@
 				return key + '=' + value;
 			}
 			return '';
-		}).filter(function(assignment) { return !!assignment; }).join('&');
+		}).filter(function(assignment) { return !!assignment; }).join('&amp;');
 		if (search.length > 0) {
 			search = '?' + search;
 		}
 		return toHREF(search);
 	};
 	Component.prototype.renderLoadingOptions = function() {
-		return '<strong style="width:130px;display:inline-block;">' + this.name + '</strong>:&nbsp;&nbsp;&nbsp;' + Object.keys(this.paths).map(function(pathName) {
+		return '<strong style="width:130px;display:inline-block;">' + this.name + '</strong>:&#160;&#160;&#160;' + Object.keys(this.paths).map(function(pathName) {
 			if (pathName === this.selectedPath) {
 				return '<strong>' + pathName + '</strong>';
 			}
 			return '<a href="' + this.generateUrlForPath(pathName) + '">' + pathName + '</a>';
-		}.bind(this)).join('&nbsp;&nbsp;&nbsp;');
+		}.bind(this)).join('&#160;&#160;&#160;');
 	};
 
 
@@ -129,6 +129,7 @@
 		}
 
 		let div = document.createElement('div');
+		div.className = 'dev-setup-control'
 		div.style.position = 'fixed';
 		div.style.top = 0;
 		div.style.right = 0;
@@ -148,6 +149,12 @@
 			}
 		}
 	})();
+
+	self.getCodiconPath = function(PATH_PREFIX) {
+		PATH_PREFIX = PATH_PREFIX || '';
+		const result = RESOLVED_CORE.getResolvedPath(PATH_PREFIX);
+		return result + '/base/browser/ui/codicons/codicon/codicon.ttf';
+	};
 
 
 	self.loadEditor = function(callback, PATH_PREFIX) {

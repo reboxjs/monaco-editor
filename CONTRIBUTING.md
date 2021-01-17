@@ -100,20 +100,22 @@ Open [http://localhost:8080/monaco-editor/test/?editor=src&monaco-typescript=src
 # create a local release
 /src/monaco-editor> npm run release
 
-# open http://localhost:8080/monaco-editor/website/
-
 # build the website
 /src/monaco-editor> npm run build-website
+
+# start local webserver
+/src/monaco-editor> npm run simpleserver
 
 # open http://localhost:8080/monaco-editor-website/
 
 ```
 
----
-
 ## Shipping a new monaco-editor npm module
 
-#### 1. Ship a new `@vscode/monaco-editor-core` npm module
+#### 0.
+* make sure you have `https://github.com/microsoft/vscode-loc` checked out next to the `vscode` folder.
+
+#### 1. Ship a new `monaco-editor-core` npm module
 * bump version in `/src/vscode/build/monaco/package.json`
 * **[important]** push all local changes to the remote to get a good public commit id.
 * generate npm package `/src/vscode> node_modules/.bin/gulp editor-distro`
